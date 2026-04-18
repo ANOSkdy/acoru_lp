@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const pillars = [
   {
     label: 'Tag',
@@ -46,9 +48,26 @@ const pillars = [
   },
 ]
 
-import Image from 'next/image'
-
 const flowSteps = ['タグにかざす', '記録される', 'AIが整理', '管理しやすくなる']
+
+function AppChrome() {
+  return (
+    <div
+      className="flex items-center gap-1.5 px-4 py-2.5 bg-canvas-2 border-b border-stroke/40"
+      aria-hidden="true"
+    >
+      <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+      <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+      <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+      <div className="flex-1 flex justify-center">
+        <div className="w-40 h-4 rounded bg-canvas-3 flex items-center justify-center">
+          <span className="text-[10px] text-ink-3 font-medium">Osasal</span>
+        </div>
+      </div>
+      <div className="w-10" />
+    </div>
+  )
+}
 
 export function WhatIsOsasal() {
   return (
@@ -69,12 +88,9 @@ export function WhatIsOsasal() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-6 mb-10">
           {pillars.map(({ label, labelJa, headline, body, icon }) => (
-            <div
-              key={label}
-              className="rounded-2xl bg-canvas p-7 border border-stroke/50"
-            >
+            <div key={label} className="rounded-2xl bg-canvas p-7 border border-stroke/50">
               <div className="mb-5">{icon}</div>
               <p className="text-[11px] font-semibold text-accent tracking-widest uppercase mb-1">
                 {label}
@@ -86,30 +102,34 @@ export function WhatIsOsasal() {
           ))}
         </div>
 
-        <div className="rounded-2xl bg-canvas border border-stroke/50 overflow-hidden">
-          <Image
-            src="/image_1.png"
-            alt="Osasal の操作画面 — タグ記録からAI整理まで"
-            width={790}
-            height={547}
-            className="w-full h-auto"
-            priority={false}
-          />
-          <div className="p-8">
-            <p className="text-[11px] font-semibold text-accent tracking-widest uppercase mb-6">
+        {/* Product screenshot card */}
+        <div className="rounded-2xl bg-canvas border border-stroke/40 overflow-hidden shadow-xl shadow-ink/5">
+          <AppChrome />
+          <div className="bg-canvas-3/30">
+            <Image
+              src="/image_1.png"
+              alt="Osasal の操作画面 — タグ記録からAI整理まで"
+              width={1536}
+              height={1024}
+              className="w-full h-auto"
+              priority={false}
+            />
+          </div>
+          <div className="px-8 py-7 border-t border-stroke/40">
+            <p className="text-[11px] font-semibold text-accent tracking-widest uppercase mb-5">
               How it works
             </p>
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2.5">
               {flowSteps.map((step, i) => (
-                <span key={step} className="flex items-center gap-3">
-                  <span className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-canvas-2 border border-stroke/50">
+                <span key={step} className="flex items-center gap-2.5">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-canvas-2 border border-stroke/60">
                     <span className="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center text-[10px] font-bold text-accent shrink-0">
                       {i + 1}
                     </span>
                     <span className="text-[0.9375rem] font-semibold text-ink">{step}</span>
                   </span>
                   {i < flowSteps.length - 1 && (
-                    <span className="text-stroke text-lg font-light hidden sm:inline" aria-hidden="true">
+                    <span className="text-stroke-2/40 text-base hidden sm:inline" aria-hidden="true">
                       →
                     </span>
                   )}
