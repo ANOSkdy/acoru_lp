@@ -1,78 +1,3 @@
-function PhoneMockup() {
-  const records = [
-    { time: '08:32', label: '巡回点検 A棟', badge: '完了', cls: 'bg-emerald-100 text-emerald-700' },
-    { time: '09:14', label: '設備確認 B棟', badge: '作業中', cls: 'bg-blue-50 text-accent' },
-  ] as const
-
-  return (
-    <div aria-hidden="true" className="relative flex justify-center">
-      <div className="absolute inset-0 bg-accent/10 blur-3xl rounded-full scale-y-75" />
-      <div className="relative w-[272px] rounded-[2.75rem] bg-ink p-2 shadow-2xl ring-1 ring-white/5">
-        <div className="rounded-[2.25rem] bg-white overflow-hidden">
-          <div className="h-7 bg-ink flex items-center justify-center">
-            <div className="w-20 h-[14px] rounded-full bg-[#2c2c2e]" />
-          </div>
-          <div className="bg-canvas-2">
-            <div className="bg-white px-4 py-2.5 flex items-center justify-between border-b border-canvas-3">
-              <span className="text-[13px] font-semibold text-ink">Osasal</span>
-              <div className="flex items-center gap-1.5">
-                <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-[11px] text-ink-2">現場A</span>
-              </div>
-            </div>
-            <div className="p-3 space-y-2.5">
-              <div className="bg-white rounded-2xl p-4 text-center border border-canvas-3 shadow-sm">
-                <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-2.5">
-                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-                    <rect x="3" y="3" width="8" height="8" rx="1.5" fill="#0071e3" fillOpacity="0.75" />
-                    <rect x="15" y="3" width="8" height="8" rx="1.5" fill="#0071e3" fillOpacity="0.75" />
-                    <rect x="3" y="15" width="8" height="8" rx="1.5" fill="#0071e3" fillOpacity="0.75" />
-                    <rect x="16" y="16" width="2.5" height="2.5" rx="0.5" fill="#0071e3" />
-                    <rect x="20" y="16" width="2.5" height="2.5" rx="0.5" fill="#0071e3" />
-                    <rect x="20" y="20" width="2.5" height="2.5" rx="0.5" fill="#0071e3" />
-                    <rect x="16" y="20" width="2.5" height="2.5" rx="0.5" fill="#0071e3" />
-                  </svg>
-                </div>
-                <p className="text-[12px] font-semibold text-ink">タグを読み取りました</p>
-                <p className="text-[10px] text-ink-2 mt-0.5">現場A-03 ／ 山田 太郎 ／ 09:14</p>
-              </div>
-
-              <div className="space-y-1.5">
-                {records.map((r) => (
-                  <div
-                    key={r.time}
-                    className="flex items-center justify-between px-3 py-2 bg-white rounded-xl border border-canvas-3"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-[9px] text-ink-3 w-8 shrink-0">{r.time}</span>
-                      <span className="text-[11px] font-medium text-ink">{r.label}</span>
-                    </div>
-                    <span className={`text-[9px] px-2 py-0.5 rounded-full font-medium shrink-0 ${r.cls}`}>
-                      {r.badge}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 border border-accent/15 rounded-xl p-3">
-                <div className="flex items-center gap-1.5 mb-1.5">
-                  <div className="w-3 h-3 rounded-full bg-accent/20 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  </div>
-                  <p className="text-[9px] font-semibold text-accent">AI 日報サマリ</p>
-                </div>
-                <p className="text-[10px] text-ink leading-relaxed">
-                  本日の作業は予定通り完了。特記事項なし。次回点検：金曜午前。
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export function Hero() {
   const flow = [
     { label: 'スマホをかざす', arrow: true },
@@ -142,8 +67,18 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="hidden lg:flex justify-end">
-            <PhoneMockup />
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[560px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-auto block"
+              >
+                <source src="/hero_1.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </div>

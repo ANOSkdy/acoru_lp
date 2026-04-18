@@ -46,6 +46,8 @@ const pillars = [
   },
 ]
 
+import Image from 'next/image'
+
 const flowSteps = ['タグにかざす', '記録される', 'AIが整理', '管理しやすくなる']
 
 export function WhatIsOsasal() {
@@ -84,26 +86,36 @@ export function WhatIsOsasal() {
           ))}
         </div>
 
-        <div className="rounded-2xl bg-canvas border border-stroke/50 p-8">
-          <p className="text-[11px] font-semibold text-accent tracking-widest uppercase mb-6">
-            How it works
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            {flowSteps.map((step, i) => (
-              <span key={step} className="flex items-center gap-3">
-                <span className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-canvas-2 border border-stroke/50">
-                  <span className="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center text-[10px] font-bold text-accent shrink-0">
-                    {i + 1}
+        <div className="rounded-2xl bg-canvas border border-stroke/50 overflow-hidden">
+          <Image
+            src="/image_1.png"
+            alt="Osasal の操作画面 — タグ記録からAI整理まで"
+            width={790}
+            height={547}
+            className="w-full h-auto"
+            priority={false}
+          />
+          <div className="p-8">
+            <p className="text-[11px] font-semibold text-accent tracking-widest uppercase mb-6">
+              How it works
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              {flowSteps.map((step, i) => (
+                <span key={step} className="flex items-center gap-3">
+                  <span className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-canvas-2 border border-stroke/50">
+                    <span className="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center text-[10px] font-bold text-accent shrink-0">
+                      {i + 1}
+                    </span>
+                    <span className="text-[0.9375rem] font-semibold text-ink">{step}</span>
                   </span>
-                  <span className="text-[0.9375rem] font-semibold text-ink">{step}</span>
+                  {i < flowSteps.length - 1 && (
+                    <span className="text-stroke text-lg font-light hidden sm:inline" aria-hidden="true">
+                      →
+                    </span>
+                  )}
                 </span>
-                {i < flowSteps.length - 1 && (
-                  <span className="text-stroke text-lg font-light hidden sm:inline" aria-hidden="true">
-                    →
-                  </span>
-                )}
-              </span>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
