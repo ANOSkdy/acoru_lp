@@ -36,3 +36,9 @@ next-env.d.ts
 
 # pnpm
 .pnpm-store/
+
+# Claude Code
+.claude/
+
+# Source assets (copied to public/ as needed)
+element/
